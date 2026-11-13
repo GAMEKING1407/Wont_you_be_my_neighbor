@@ -18,7 +18,7 @@ int main(void) {
         return 1;
     }
 
-    for (int i = 1; i <= 100000000; i++) {
+    for (int i = 1; i <= 1000000000; i++) {
         snprintf(filename, sizeof(filename), "%s/hello_%d.txt", folder, i);
 
         FILE *fptr = fopen(filename, "w");
