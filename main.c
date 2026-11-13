@@ -23,11 +23,10 @@ int main(void) {
 
         FILE *fptr = fopen(filename, "w");
         if (fptr == NULL) {
-            printf("Error: Could not create %s.\n", filename);
             return 1;
         }
 
-        fprintf(fptr, "Hello - Daniel\n");
+        fprintf(fptr, "Welcome to my neighborhood\n");
         fclose(fptr);
     }
     return 0;
