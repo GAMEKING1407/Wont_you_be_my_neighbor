@@ -1,17 +1,21 @@
 #include <stdio.h>
 
 int main() {
-    FILE *fptr = fopen("hello.txt", "w");
+    char filename[32];
 
-    if (fptr == NULL) {
-        printf("Error: Could not create the file.\n");
-        return 1;
+    for (int i = 1; i <= 10; i++) {
+        snprintf(filename, sizeof(filename), "hello_%d.txt", i);
+
+        FILE *fptr = fopen(filename, "w");
+        if (fptr == NULL) {
+            printf("Error: Could not create %s.\n", filename);
+            return 1;
+        }
+
+        fprintf(fptr, "Hello - Daniel\n", i);
+        fclose(fptr);
     }
 
-    fprintf(fptr, "Hello - Daniel\n");
-
-    fclose(fptr);
-
-    printf("File created successfully.\n");
+    printf("Successfully created 10 files.\n");
     return 0;
 }
