@@ -1,10 +1,25 @@
 #include <stdio.h>
+#include <errno.h>
 
-int main() {
-    char filename[32];
+#ifdef _WIN32
+    #include <direct.h>
+    #define MKDIR(dir) _mkdir(dir)
+#else
+    #include <sys/stat.h>
+    #include <sys/types.h>
+    #define MKDIR(dir) mkdir(dir, 0755)
+#endif
+
+int main(void) {
+    const char *folder = "messages";
+    char filename[64];
+
+    if (MKDIR(folder) != 0 && errno != EEXIST) {
+        return 1;
+    }
 
     for (int i = 1; i <= 10; i++) {
-        snprintf(filename, sizeof(filename), "hello_%d.txt", i);
+        snprintf(filename, sizeof(filename), "%s/hello_%d.txt", folder, i);
 
         FILE *fptr = fopen(filename, "w");
         if (fptr == NULL) {
@@ -12,10 +27,8 @@ int main() {
             return 1;
         }
 
-        fprintf(fptr, "Hello - Daniel\n", i);
+        fprintf(fptr, "Hello - Daniel\n");
         fclose(fptr);
     }
-
-    printf("Successfully created 10 files.\n");
     return 0;
 }
