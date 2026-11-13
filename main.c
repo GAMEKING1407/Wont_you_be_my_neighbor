@@ -1,11 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    printf("Wont you be my neighbor\n");
+    printf("Let's count to 5!\n");
 
-    printf("Let's count to 5!");
-    
-    for (int i = 0; i < 5; i++) {
+    for (int i = 1; i < 6; i++) {
         printf("%d\n", i);
     }
     
