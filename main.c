@@ -2,6 +2,12 @@
 #include <math.h>
 
 int main() {
-    printf("Wont_you_be_my_neighbor\n");
+    printf("Wont you be my neighbor\n");
+    int main() {
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", i);
+    }
+    return 0;
+}
     return 0;
 }
